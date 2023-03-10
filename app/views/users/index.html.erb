@@ -1,0 +1,63 @@
+<%= flash[:notice] %>
+
+<%= form_with model: @user, url: '/users', method: :post do |f| %>
+
+   <h1>User info<h1>
+   
+  <p>Name<p>
+  <%= f.text_field :title %>
+	
+    <p>Image</p>
+    
+    <p>Introduction</p>
+  <%= f.text_area :body %><br>
+
+  
+  <%= f.submit 'Update User' %></br>
+  
+<% end %>
+    <!--%= f.submit 'Update User' %>-->
+   <% @user.each do |user| %>
+   
+   
+       <!--<tr>-->
+       <!--    <td>%= user.name %></td>-->
+       <!--    <td>%= user.introduction %></td>-->
+       <!--    <td>-->
+       <!--        %= link_to "show" ,user_path(book.id), class:"show" %>-->
+       <!--    </td>-->
+       <!--    <td>-->
+       <!--        %= link_to "Edit" ,edit_user_path(book.id), class:"edit" %>-->
+       <!--    </td>-->
+       <!--    <td>-->
+       <!--        %= link_to "Destroy",user_path(book.id), method: :delete, "data-confirm" => " get ready to delete？", class:"destroy" %>-->
+       <!--    </td>-->
+       <!-- </tr>-->
+    <% end %>
+   </tbody>
+</table>
+
+<!--<h1>New Book</h1>-->
+
+<!--% if @book.errors.any? %>-->
+<!--  %= @book.errors.count %>件のエラーが発生しました-->
+<!--  <ul>-->
+<!--    % @book.errors.full_messages.each do |message| %>-->
+<!--      <li>%= message %></li>-->
+<!--    % end %>-->
+<!--  </ul>-->
+<!--% end %>-->
+  
+
+<!--%= form_with model: @book, url: '/books', method: :post do |f| %>-->
+
+<!--  <p>Title</p>-->
+<!--  %= f.text_field :title %>-->
+	
+<!--  <p>Opinion</p>-->
+<!--  %= f.text_area :body %><br>-->
+
+  
+<!--  %= f.submit 'Create Book' %></br>-->
+  
+<!-- % end %>
