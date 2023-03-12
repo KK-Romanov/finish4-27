@@ -2,10 +2,32 @@
   <%= flash[:notice] %>
 </div>
 
-<h2>title</h2>
+<div class="row justify-content-center">
+    <% if user_signed_in? && @user == current_user %>
+    <h1 class = "font-weight-normal mt-5 mb-5">my page</h1>
+    <% end %>
+</div>
+<% if user_signed_in? && @user == current_user %>
+<p class="d-flex justify-content-end">
+    <%= link_to "Edit Profile", edit_user_path(@user), class: "btn-sm btn-success" %>
+</p>
+<% end %>
+<!--<div class="d-flex">-->
+<!--    %= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.png", class: "mb-3 profile-img" %>-->
+<!--    <h4 class="ml-3 mb-3 card w-100">%= @user.profile %></h4>-->
+<!--  %= image_tag @book.get_image %>-->
+<!--  <p>説明：%= @book.caption %></p>-->
+<!--  <p>投稿ユーザー画像：%= image_tag @book.user.get_profile_image(100,100) %></p>  -->
+<!--  <p>ユーザーネーム：%= @book.user.name %></p>-->
+<!--  % if @book.user == current_user %>-->
+<!--    %= link_to "削除", book_path(@book), method: :delete %>-->
+<!--  % end %>-->
+
+
+<h2>Title</h2>
 <p><%= @books.title %></p>
 
-<h2>本文</h2>
+<h2>Opinion</h2>
 <p><%= @books.body %></p>
 
 <%= link_to "edit", edit_book_path(@books.id) %>

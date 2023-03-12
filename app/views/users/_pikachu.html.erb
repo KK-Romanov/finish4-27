@@ -1,5 +1,11 @@
-<h1>Edit Book</h1>
 <%= flash[:notice] %>
+
+
+<h1>User Info</h1>
+ name<% current_user.name %><br>
+introduction</br>
+<h1>New Book</h1>
+
 <% if @book.errors.any? %>
   <%= @book.errors.count %>件のエラーが発生しました
   <ul>
@@ -8,16 +14,17 @@
     <% end %>
   </ul>
 <% end %>
+  
 
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
 
-<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
-
-  <h4> Title </h4>
+  <p>Title</p>
   <%= f.text_field :title %>
-  
-  <h4> opinion </h4>
+	
+  <p>Opinion</p>
   <%= f.text_area :body %><br>
+
   
-  <%= f.submit 'Update Book' %>
+  <%= f.submit 'Create Book' %></br>
   
 <% end %>

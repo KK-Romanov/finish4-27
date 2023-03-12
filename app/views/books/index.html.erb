@@ -1,55 +1,91 @@
 <%= flash[:notice] %>
-<h1>Books</h1>
-
-<table>
-   <thead>
-      <tr>
-         <th>Title</th>
-         <th>Opinion</th>
-         <th colspan "4">O</th>
-      </tr>
-   </thead>
-   <tbody>
-       <!--each do =繰り返し-->
-   <% @books.each do |book| %>
-       <tr>
-           <td><%= book.title %></td>
-           <td><%= book.body %></td>
-           <td>
-               <%= link_to "show" ,book_path(book.id), class:"show" %>
-           </td>
-           <td>
-               <%= link_to "Edit" ,edit_book_path(book.id), class:"edit" %>
-           </td>
-           <td>
-               <%= link_to "Destroy",book_path(book.id), method: :delete, "data-confirm" => " get ready to delete？", class:"destroy" %>
-           </td>
+<div class = "container px-5 px sm-0">
+  <div class = "row">
+    <div class = "col-md-3">
+     <h2>User Info</h2>
+    <table class="table">
+      <thead>
+        <tr>  
+         <th scope="col"><b>name<% current_user.name %></th>
+         <br>
         </tr>
-    <% end %>
-   </tbody>
-</table>
+      </thead>
+    </table>  
+         <b>introduction</b>
+            <%= form_with model: @user do |f| %>
+     
+    <div class='form-group'>
+    <!--メンター質問-->
+    <%= f.submit "fa-solid fa-user-gear",class:'btn-outline-secondary' %>
+    <br>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    </a>
+    </div>
+    <%end%>
 
-<h1>New Book</h1>
+    <h2>New Book</h2>
 
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
-  <ul>
+    <% if @book.errors.any? %>
+    <%= @book.errors.count %>件のエラーが発生しました
+    <ul>
     <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+    <li><%= message %></li>
     <% end %>
-  </ul>
-<% end %>
+    </ul>
+    <% end %>
   
 
-<%= form_with model: @book, url: '/books', method: :post do |f| %>
+    <%= form_with model: @book, url: '/books', method: :post do |f| %>
 
-  <p>Title</p>
-  <%= f.text_field :title %>
+    <p>Title</p>
+    <%= f.text_field :title %>
 	
-  <p>Opinion</p>
-  <%= f.text_area :body %><br>
+    <p>Opinion</p>
+    <%= f.text_area :body %><br>
 
-  
-  <%= f.submit 'Create Book' %></br>
-  
-<% end %>
+    <div class='form-group'>
+    <%= f.submit 'Create Book', class:"btn btn-success" %></br>
+    </div>
+    </div>
+    <% end %>
+    
+  <div class = "col-md-8 ofset-1">
+     <h2> Books </h2>
+    <table class="table">
+      <thead>
+      <tr>
+         <th scope="col"></th>
+         <th scope="col">Title</th>
+         <th scope="col">Opinion</th>
+      </tr>
+     </thead>
+      <tbody>
+      <!--each do =繰り返し,　.:Sを付け加える。-->
+      <% @books.each do |book| %>
+       <%= link_to book_path(book.id) do %>
+        <!--%= image_tag books_path.get_image %>-->
+        <% end %>
+        <!--<p>投稿ユーザー画像：%= book.user.get_profile_image(100,100) %></p>-->
+        <tr>
+         <td></td>    
+         <td><%= book.title %></td>
+         <td><%= book.body %></td>
+         <!--<td>-->
+             <!--%= link_to "show" ,book_path(book.id), class:"show" %>-->
+         <!--</td>-->
+         <td>
+             <span><%= link_to "Edit" ,edit_book_path(book.id), class:"edit" %>
+         </td>
+         <td>
+                   <%= link_to "Destroy",book_path(book.id), method: :delete, "data-confirm" => " Are you sure？", class:"destroy" %>
+             </span>
+         </td>
+        </tr>
+     <% end %>
+     </tbody>
+  </table>
+  </div>
+ </div>
+</div>
+
+<!--deedman wonderland-->

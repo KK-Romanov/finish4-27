@@ -1,63 +1,94 @@
 <%= flash[:notice] %>
-
+<!--%= render 'pikachu', book : @books %>-->
 <%= form_with model: @user, url: '/users', method: :post do |f| %>
 
-   <h1>User info<h1>
-   
-  <p>Name<p>
-  <%= f.text_field :title %>
-	
-    <p>Image</p>
-    
-    <p>Introduction</p>
-  <%= f.text_area :body %><br>
+<div class = "container px-5 px sm-0">
+  <div class = "row">
+    <div class = "col-md-3">
+     <h2>User Info</h2>
+    <table class="table">
+      <thead>
+        <tr>  
+         <th scope="col"><b>name<% current_user.name %></th>
+         <br>
+        </tr>
+      </thead>
+    </table>  
+         <b>introduction</b>
+            <%= form_with model: @users do |f| %>
+     
+    <div class='form-group'>
+    <!--メンター質問-->
+    <%= f.submit "fa-solid fa-user-gear",class:'btn-outline-secondary' %>
+    <br>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    </a>
+    </div>
+    <%end%>
 
+    <h2>New Book</h2>
+
+    <!--% if @book.errors.any? %>-->
+    <!--%= @book.errors.count %>件のエラーが発生しました-->
+    <!--<ul>-->
+    <!--% @book.errors.full_messages.each do |message| %>-->
+    <!--<li>%= message %></li>-->
+    <!--% end %>-->
+    <!--</ul>-->
+    <!--% end %>-->
   
-  <%= f.submit 'Update User' %></br>
-  
-<% end %>
-    <!--%= f.submit 'Update User' %>-->
-   <% @user.each do |user| %>
-   
-   
-       <!--<tr>-->
-       <!--    <td>%= user.name %></td>-->
-       <!--    <td>%= user.introduction %></td>-->
-       <!--    <td>-->
-       <!--        %= link_to "show" ,user_path(book.id), class:"show" %>-->
-       <!--    </td>-->
-       <!--    <td>-->
-       <!--        %= link_to "Edit" ,edit_user_path(book.id), class:"edit" %>-->
-       <!--    </td>-->
-       <!--    <td>-->
-       <!--        %= link_to "Destroy",user_path(book.id), method: :delete, "data-confirm" => " get ready to delete？", class:"destroy" %>-->
-       <!--    </td>-->
-       <!-- </tr>-->
+
+    <%= form_with model: @book, url: '/books', method: :post do |f| %>
+
+    <p>Title</p>
+    <%= f.text_field :title %>
+	
+    <p>Opinion</p>
+    <%= f.text_area :body %><br>
+
+    <div class='form-group'>
+    <%= f.submit 'Create Book', class:"btn btn-success" %></br>
+    </div>
+    </div>
     <% end %>
-   </tbody>
-</table>
-
-<!--<h1>New Book</h1>-->
-
-<!--% if @book.errors.any? %>-->
-<!--  %= @book.errors.count %>件のエラーが発生しました-->
-<!--  <ul>-->
-<!--    % @book.errors.full_messages.each do |message| %>-->
-<!--      <li>%= message %></li>-->
-<!--    % end %>-->
-<!--  </ul>-->
-<!--% end %>-->
-  
-
-<!--%= form_with model: @book, url: '/books', method: :post do |f| %>-->
-
-<!--  <p>Title</p>-->
-<!--  %= f.text_field :title %>-->
-	
-<!--  <p>Opinion</p>-->
-<!--  %= f.text_area :body %><br>-->
-
-  
-<!--  %= f.submit 'Create Book' %></br>-->
-  
-<!-- % end %>
+    
+  <div class = "col-md-8 ofset-1">
+     <h2> Users </h2>
+    <table class="table">
+      <thead>
+      <tr>
+         <!--<th scope="col"></th>-->
+         <th scope="col">image</th>
+         <th scope="col">name</th>
+      </tr>
+     </thead>
+      <tbody>
+      <!--each do =繰り返し,　.:Sを付け加える。-->
+      <!--% @books.each do |book| %>-->
+      <!-- %= link_to book_path(book.id) do %>-->
+        <!--%= image_tag books_path.get_image %>-->
+      <!--  % end %>-->
+        <!--<p>投稿ユーザー画像：%= book.user.get_profile_image(100,100) %></p>-->
+      <!--  <tr>-->
+      <!--   <td></td>    -->
+      <!--   <td>%= book.title %></td>-->
+      <!--   <td>%= book.body %></td>-->
+         <!--<td>-->
+    <!--%= link_to "show" ,user_path(user.id), class:"show" %>-->
+         <!--</td>-->
+      <!--   <td>-->
+      <!--       <span>%= link_to "Edit" ,edit_book_path(book.id), class:"edit" %>-->
+      <!--   </td>-->
+      <!--   <td>-->
+      <!--             %= link_to "Destroy",book_path(book.id), method: :delete, "data-confirm" => " Are you sure？", class:"destroy" %>-->
+      <!--       </span>-->
+      <!--   </td>-->
+      <!--  </tr>-->
+ <!--deedman wonderland-->
+     <% end %>
+     </tbody>
+  </table>
+  </div>
+ </div>
+</div>
+<!--%end%>-->
