@@ -1,27 +1,24 @@
 <%= flash[:notice] %>
 <div class = "container px-5 px sm-0">
   <div class = "row">
-    <div class = "col-md-3">
-     <h2>User Info</h2>
-    <table class="table">
-      <thead>
-        <tr>  
-         <th scope="col"><b>name<% current_user.name %></th>
-         <br>
-        </tr>
-      </thead>
-    </table>  
-         <b>introduction</b>
-            <%= form_with model: @user do |f| %>
+     <div class = "col-md-3">
      
-    <div class='form-group'>
-    <!--メンター質問-->
-    <%= f.submit "fa-solid fa-user-gear",class:'btn-outline-secondary' %>
-    <br>
-    <button type="button" class="btn btn-outline-secondary">Secondary</button>
-    </a>
+     <h2>User Info</h2>
+     <%= image_tag @user.get_profile_image %>
+    <table class="table">
+        <tr>  
+         <th>name</th><td><%= @user.name %></td>
+         </tr>
+         <tr>
+         <th>introduction</th><td><%= @user.introduction %></td>
+        </tr>
+    </table>  
+     
+    <div>
+    <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary" do %>
+    <i class="fas fa-user-cog"></i>
+    <% end %>
     </div>
-    <%end%>
 
     <h2>New Book</h2>
 
@@ -46,8 +43,8 @@
     <div class='form-group'>
     <%= f.submit 'Create Book', class:"btn btn-success" %></br>
     </div>
-    </div>
     <% end %>
+    </div>
     
   <div class = "col-md-8 ofset-1">
      <h2> Books </h2>
@@ -87,5 +84,3 @@
   </div>
  </div>
 </div>
-
-<!--deedman wonderland-->
