@@ -1,30 +1,45 @@
+<div class = "container px-5 px sm-0">
+  <div class = "row">
+    <div class = "col-md-3">
 <%= flash[:notice] %>
-
-
-<h1>User Info</h1>
- name<% current_user.name %><br>
-introduction</br>
-<h1>New Book</h1>
-
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+     <h2>User Info</h2>
+　　 <%= image_tag @user.get_profile_image %>
+    <table class="table">
+        <tr>  
+         <th>name</th><td><%= @user.name %></td>
+         </tr>
+         <tr>
+         <th>introduction</th><td><%= @user.introduction %></td>
+        </tr>
+    </table>  
+     
+    <div>
+    <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary" do %>
+    <i class="fas fa-user-cog"></i>
     <% end %>
-  </ul>
-<% end %>
+    </div>
+    <h2>New Book</h2>
+
+    <!--% if @book.errors.any? %>-->
+    <!--%= @book.errors.count %>件のエラーが発生しました-->
+    <!--<ul>-->
+    <!--% @book.errors.full_messages.each do |message| %>-->
+    <!--<li>%= message %></li>-->
+    <!--% end %>-->
+    <!--</ul>-->
+    <!--% end %>-->
   
 
-<%= form_with model: @book, url: '/books', method: :post do |f| %>
+    <%= form_with model: @book, url: '/books', method: :post do |f| %>
 
-  <p>Title</p>
-  <%= f.text_field :title %>
+    <p>Title</p>
+    <%= f.text_field :title %>
 	
-  <p>Opinion</p>
-  <%= f.text_area :body %><br>
+    <p>Opinion</p>
+    <%= f.text_area :body %><br>
 
-  
-  <%= f.submit 'Create Book' %></br>
-  
-<% end %>
+    <div class='form-group'>
+    <%= f.submit 'Create Book', class:"btn btn-success" %></br>
+    </div>
+    </div>
+    <% end %>

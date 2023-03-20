@@ -1,26 +1,28 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-    <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-</div>
-
-<!-- ユーザーの投稿一覧 -->
-
-<% @users.each do |user| %>
-<div>
-  <%= link_to user_path(user.id) do %>
-    <%= image_tag user.get_image %>
-  <% end %>
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <p><%= link_to "プロフィール編集", XXX %></p></div>
+<%= render 'users/pikachu' %>
+ <div class="col-md-8 offset-md-1">
+     <h2>Books</h2>
+      <table class="table">
+           <thead>
+           <tr>
+             <th scope="col"></th>
+             <th scope="col">Title</th>
+             <th scope="col">Opinion</th>
+           </tr>
+          </thead>
+          <tbody>
+            <td>
+                <%= image_tag @user.get_profile_image %><br>
+                
+            </td>
+            <td>
+                <%= link_to @book.title, book_path(@book.id) %>
+            </td>
+             <td>
+                 <%= @book.body %>
+             <!--%= link_to "show" ,book_path(book.id), class:"show" %>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+ </div>
   
-  詳細ページで表示しているユーザーの編集画面に飛ばす
-  
-  <% @book.each do |book| %
-      <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
