@@ -8,7 +8,7 @@
            <td>
                 <%= image_tag @user.get_profile_image %><br>
                 <%=link_to @user.name, user_path(@user.id) %>
-                <!--% end %>-->
+                <% if @book.user == current_user %>
             </td>
                 
             <td>
@@ -24,7 +24,7 @@
             </td>
         </tr>
         </tbody>
-          
+               <% end %>
     </table>
  </div>
   
