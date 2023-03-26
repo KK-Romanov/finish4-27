@@ -1,6 +1,6 @@
-<% if @user.id==@current_user.id %>
-  <% link_to("edit", "users/#{@user.id}/edit") %>
-<% end %>
+    <% if @user.id==@current_user.id %>
+       <% link_to("edit", "users/#{@user.id}/edit") %>
+    <% end %>
 
 <%= render 'users/pikachu', user: @user, book: @book_new %>
  <div class="col-md-8 offset-md-1">
