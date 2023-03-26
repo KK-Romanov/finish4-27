@@ -1,14 +1,13 @@
-<%= render 'users/pikachu' %>
- <div class="col-md-8 offset-md-1">
+<%= render 'users/pikachu', user: @user, book: @book_new %>
+    <div class = "col-md-8 offset-md-1">
      <h2>Book detail</h2>
       <table class="table">
        <tbody>
          <tr>
                 <!--%= @user do |user| %>-->
-           <td>
-                <%= image_tag @user.get_profile_image %><br>
-                <%=link_to @user.name, user_path(@user.id) %>
-                <% if @book.user == current_user %>
+            <td> 
+              <%=link_to image_tag @book.user.get_profile_image %><br>
+              <%=link_to @book.user.name, user_path(@book.user.id) %>
             </td>
                 
             <td>
@@ -18,13 +17,14 @@
                 <%= @book.body %>
             </td>
             <td>
+                <% if @book.user == current_user %>
                 <%= link_to "Edit" ,edit_book_path(@book.id), class:"btn btn-success" %>
             <td>
                 <%= link_to "Destroy",book_path(@book.id), method: :delete, "data-confirm" => " Are you sure？", class:"btn btn-danger" %>
             </td>
+                <% end %>
         </tr>
         </tbody>
-               <% end %>
     </table>
- </div>
-  
+   </div>
+ 

@@ -3,13 +3,13 @@
     <div class = "col-md-3">
 <%= flash[:notice] %>
      <h2>User Info</h2>
-　　 <%= image_tag @user.get_profile_image %>
+　　 <%= image_tag user.get_profile_image %>
     <table class="table">
         <tr>  
-         <th>name</th><td><%= @user.name %></td>
+         <th>name</th><td><%= user.name %></td>
          </tr>
          <tr>
-         <th>introduction</th><td><%= @user.introduction %></td>
+         <th>introduction</th><td><%= user.introduction %></td>
         </tr>
     </table>  
      
@@ -30,7 +30,7 @@
     <!--% end %>-->
   
 
-    <%= form_with model: @book, url: '/books', method: :post do |f| %>
+    <%= form_with model: book, url: '/books', method: :post do |f| %>
 
     <p>Title</p>
     <%= f.text_field :title %>

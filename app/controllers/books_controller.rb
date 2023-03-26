@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
     def new
         @book = Book.new
     end
@@ -24,7 +25,7 @@ class BooksController < ApplicationController
     end
     def show
         @book = Book.find(params[:id])
-        @books = Book.all
+        @book_new = Book.new
         @user = current_user
     end
     def update
@@ -44,16 +45,16 @@ class BooksController < ApplicationController
     def destroy
         book = Book.find(params[:id])
      if book.destroy
-        flash[:notice] = "削除が成功しました"  
+        flash[:notice] = "successfully"  
         redirect_to '/books'
      end
     end
     
     private
      def book_params
-        params.require(:book).permit(:title, :body, :image)
+        params.require(:book).permit(:title, :body, :image) 
+        # :image
      end
-   
   
 
 end

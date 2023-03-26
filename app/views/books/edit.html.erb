@@ -24,6 +24,6 @@
   <%= f.submit 'Update Book', class:"btn btn-success" %>
 <% end %>
 
-<%= link_to "Show", books_path %>
+<%= link_to "Show", book_path(@book.id) %>
  |
 <%= link_to "Back", books_path %>
